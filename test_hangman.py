@@ -44,3 +44,10 @@ def test_mask_word_single():
     guessed = ["l"]
     ret = hangman.mask_word(secret_word, guessed)
     assert ret == "-l------"
+
+
+def test_mask_bad_guess():
+    secret_word = "elephant"
+    guessed = ["x"]
+    ret = hangman.mask_word(secret_word, guessed)
+    assert ret == "--------"
