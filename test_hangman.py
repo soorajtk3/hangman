@@ -41,15 +41,15 @@ def test_get_word_min_length():
 
 def test_mask_word_single():
     secret_word = "elephant"
-    guessed = ["l"]
-    ret = hangman.mask_word(secret_word, guessed)
+    guesses = ["l"]
+    ret = hangman.mask_word(secret_word, guesses)
     assert ret == "-l------"
 
 
 def test_mask_bad_guess():
     secret_word = "elephant"
-    guessed = ["x"]
-    ret = hangman.mask_word(secret_word, guessed)
+    guesses = ["x"]
+    ret = hangman.mask_word(secret_word, guesses)
     assert ret == "--------"
 
 
@@ -141,5 +141,4 @@ def test_play_round_correct_complete():
     new_guess = "l"
     remaining_turns, repeat, finished = hangman.play_round(
         secret_word, guesses, new_guess, remaining_turns)
-
     assert finished == True
