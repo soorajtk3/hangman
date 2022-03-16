@@ -82,3 +82,64 @@ def test_create_status_normal():
     Guesses: n x h
     Remaining turns : 6
     """
+
+
+def test_create_status_not_guessed():
+    secret_word = "hospital"
+    guesses = []
+    remaining_turns = 8
+    status = hangman.create_status(secret_word, guesses, remaining_turns)
+    assert status == """Word: --------
+    Guesses: 
+    Remaining turns : 8
+    """
+
+
+def test_play_round_correct_guess():
+    secret_word = "hospital"
+    guesses = []
+    remaining_turns = 8
+    new_guess = "a"
+    remaining_turns, repeat, finished = hangman.play_round(
+        secret_word, guesses, new_guess, remaining_turns)
+    assert guesses == ["a"]
+    assert remaining_turns == 8
+    assert repeat == False
+    assert finished == False
+
+
+def test_play_round_correct_wrong():
+    secret_word = "hospital"
+    guesses = ["a"]
+    remaining_turns = 7
+    new_guess = "q"
+    remaining_turns, repeat, finished = hangman.play_round(
+        secret_word, guesses, new_guess, remaining_turns)
+    assert guesses == ["a", "q"]
+    assert remaining_turns == 6
+    assert repeat == False
+    assert finished == False
+
+
+def test_play_round_correct_repeat():
+    secret_word = "hospital"
+    guesses = ["a"]
+    remaining_turns = 8
+    guess = "a"
+    remaining_turns, repeat, finished = hangman.play_round(
+        secret_word, guesses, guess, remaining_turns)
+    assert guesses == ["a"]
+    assert remaining_turns == 8
+    assert repeat == True
+    assert finished == False
+
+
+def test_play_round_correct_complete():
+    secret_word = "hospital"
+    guesses = ["h", "o", "s", "p", "i", "t", "a"]
+    remaining_turns = 8
+    new_guess = "l"
+    remaining_turns, repeat, finished = hangman.play_round(
+        secret_word, guesses, new_guess, remaining_turns)
+
+    assert finished == True
