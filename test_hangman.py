@@ -55,22 +55,22 @@ def test_mask_bad_guess():
 
 def test_mask_good_guess():
     secret_word = "hangman"
-    guessed = ["m"]
-    ret = hangman.mask_word(secret_word, guessed)
+    guesses = ["m"]
+    ret = hangman.mask_word(secret_word, guesses)
     assert ret == "----m--"
 
 
 def test_mask_guess_multiple():
     secret_word = "hangman"
-    guessed = ["n"]
-    ret = hangman.mask_word(secret_word, guessed)
+    guesses = ["n"]
+    ret = hangman.mask_word(secret_word, guesses)
     assert ret == "--n---n"
 
 
 def test_mask_good_guess_mix():
     secret_word = "hangman"
-    guessed = ["g", "q", "m"]
-    ret = hangman.mask_word(secret_word, guessed)
+    guesses = ["g", "q", "m"]
+    ret = hangman.mask_word(secret_word, guesses)
     assert ret == "---gm--"
 
 
@@ -78,7 +78,7 @@ def test_create_status_normal():
     secret_word = "hospital"
     guesses = ["n", "x", "h"]
     remaining_turns = 6
-    assert hangman.create_status(secret_word, guesses, remaining_turns) == """Word: h------
+    assert hangman.create_status(secret_word, guesses, remaining_turns) == """Word: h-------
     Guesses: n x h
     Remaining turns : 6
     """
