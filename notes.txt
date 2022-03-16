@@ -1,0 +1,26 @@
+Possible words
+1. No punctuation
+2. No proper nouns (no capital first letters)
+3. Atleast 5 letters
+
+
+while True:
+      print
+          - masked word
+          - Guesses so far (correct and wrong)
+          - Number of turns left
+
+      read a letter
+
+      check
+         - if already guessed, ignore
+         - if correct, update masked word, guesses
+         - if wrong, update turns, guesses
+      
+      if word guessed:
+        win! quit
+      if turns over:
+        lose! print word. quit
+      
+      
+      
